@@ -46,3 +46,7 @@ class MailingAttempt(models.Model):
 
     def __str__(self):
         return f'{self.date_time} {self.status} {self.response_server}'
+
+    class Meta:
+        verbose_name = 'Попытка отправки по почте'
+        verbose_name_plural = 'Попытки отправки по почте'
