@@ -1,14 +1,51 @@
-from django.shortcuts import render
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
+from mail_service.models import Customer, Message
 
 
-# class IndexListView(ListView):
-#     model =
+class CustomerCreateView(CreateView):
+    model = Customer
+    fields = ('email', 'name', 'comment')
+    success_url = reverse_lazy('mail_service:list')
 
 
-def index(request):
-    return render(request, 'mail_service/index.html')
+class CustomerUpdateView(UpdateView):
+    model = Customer
+    fields = ('email', 'name', 'comment')
 
 
-def contacts(request):
-    return render(request, 'mail_service/contacts.html')
+class CustomerListView(ListView):
+    model = Customer
+
+
+class CustomerDetailView(DetailView):
+    model = Customer
+
+
+class CustomerDeleteView(DeleteView):
+    model = Customer
+    success_url = reverse_lazy('mail_service:list')
+
+
+class MessageCreateView(CreateView):
+    model = Message
+    fields = ('topic_letter', 'body_letter')
+    success_url = reverse_lazy('mail_service:list')
+
+
+class MessageUpdateView(UpdateView):
+    model = Message
+    fields = ('topic_letter', 'body_letter')
+
+
+class MessageListView(ListView):
+    model = Message
+
+
+class MessageDetailView(DetailView):
+    model = Message
+
+
+class MessageDeleteView(DeleteView):
+    model = Message
+    success_url = reverse_lazy('mail_service:list')

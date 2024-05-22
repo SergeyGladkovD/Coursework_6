@@ -1,5 +1,7 @@
 from django.db import models
 
+NULLABLE = {"blank": "True", "null": "True"}
+
 
 class Customer(models.Model):
     email = models.EmailField(verbose_name='email')
