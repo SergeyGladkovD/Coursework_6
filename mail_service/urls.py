@@ -1,10 +1,15 @@
 from django.urls import path
+from mail_service.apps import MailServiceConfig
+from mail_service.views import CustomerCreateView, CustomerUpdateView, CustomerListView, CustomerDetailView, \
+	CustomerDeleteView
 
-from mail_service.views import index, contacts
+app_name = MailServiceConfig.name
 
-app_name = 'students_list'
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('contacts/', contacts, name='contacts')
+	path('create/', CustomerCreateView.as_view(), name='create'),
+	path('', CustomerListView.as_view(), name='list'),
+	path('view/<int:pk>/', CustomerDetailView.as_view(), name='view'),
+	path('edit/<int:pk>', CustomerUpdateView.as_view(), name='edit'),
+	path('delete/<int:pk>', CustomerDeleteView.as_view(), name='delete'),
 ]
