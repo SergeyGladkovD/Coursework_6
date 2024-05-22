@@ -8,3 +8,7 @@ from django.views.generic import ListView
 
 def index(request):
     return render(request, 'mail_service/index.html')
+
+
+def contacts(request):
+    return render(request, 'mail_service/contacts.html')
