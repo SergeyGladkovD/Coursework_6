@@ -1,6 +1,10 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
+from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView, TemplateView
 from mail_service.models import Customer, Message
+
+
+class MessagesView(TemplateView):
+    template_name = 'mail_service/message.html'
 
 
 class CustomerCreateView(CreateView):
@@ -12,6 +16,7 @@ class CustomerCreateView(CreateView):
 class CustomerUpdateView(UpdateView):
     model = Customer
     fields = ('email', 'name', 'comment')
+    success_url = reverse_lazy('mail_service:list')
 
 
 class CustomerListView(ListView):
@@ -36,6 +41,7 @@ class MessageCreateView(CreateView):
 class MessageUpdateView(UpdateView):
     model = Message
     fields = ('topic_letter', 'body_letter')
+    success_url = reverse_lazy('mail_service:list')
 
 
 class MessageListView(ListView):
