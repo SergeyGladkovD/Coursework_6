@@ -8,11 +8,11 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                    <li>email {{ object.email }}</li>
-                    <li>Комментарий: {{object.comment}}</li>
+                    <li>{{ object.email }}</li>
+                    <li>{{object.comment}}</li>
                 </ul>
-                <a class="btn btn-success" role="button" href=" url 'mail_service:edit product.pk ">Редактировать</a>
-                <a class="btn btn-danger" role="button" href=" url 'mail_service:delete product.pk ">Удалить</a>
+                 <a class="btn btn-success" role="button" href="{% url 'mail_service:edit' object.pk %}">Редактировать</a>
+                <a class="btn btn-danger" role="button" href="{% url 'mail_service:delete' object.pk %} ">Удалить</a>
             </div>
         </div>
     </div>
