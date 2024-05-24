@@ -3,10 +3,6 @@ from django.views.generic import CreateView, UpdateView, ListView, DetailView, D
 from mail_service.models import Customer, Message
 
 
-class MessagesView(TemplateView):
-    template_name = 'mail_service/message.html'
-
-
 class CustomerCreateView(CreateView):
     model = Customer
     fields = ('email', 'name', 'comment')
@@ -35,13 +31,13 @@ class CustomerDeleteView(DeleteView):
 class MessageCreateView(CreateView):
     model = Message
     fields = ('topic_letter', 'body_letter')
-    success_url = reverse_lazy('mail_service:list')
+    success_url = reverse_lazy('mail_service:list_message')
 
 
 class MessageUpdateView(UpdateView):
     model = Message
     fields = ('topic_letter', 'body_letter')
-    success_url = reverse_lazy('mail_service:list')
+    success_url = reverse_lazy('mail_service:list_message')
 
 
 class MessageListView(ListView):
@@ -54,4 +50,4 @@ class MessageDetailView(DetailView):
 
 class MessageDeleteView(DeleteView):
     model = Message
-    success_url = reverse_lazy('mail_service:list')
+    success_url = reverse_lazy('mail_service:list_message')
