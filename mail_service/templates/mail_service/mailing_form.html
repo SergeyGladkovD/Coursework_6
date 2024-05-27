@@ -7,11 +7,14 @@
                 <div class="card_body">
                     <form method="post">
                         {% csrf_token %}
-                        <p>Удалить сообщение {{object.name}}</p>
+                        {{ form.as_p}}}
                         <button type="submit" class="btn btn-success">
-                            Удалить
+                            {% if object %}
+                            Сохранить
+                            {% else %}
+                            Создать
+                            {% endif%}
                         </button>
-                          <a href="{% url 'mail_service:list_message' %}" class="btn btn-success">Отмена</a>
                     </form>
                 </div>
             </div>

@@ -1,0 +1,24 @@
+{% extends 'mail_service/base.html'%}
+{% block content %}
+{% for object in object_list %}
+<div class="row text-center">
+    <div class="col-4">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Рассылка</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                    <li>{{object.date_time}}</li>
+                    <li>{{object.period}}</li>
+                     <li>{{object.status}}</li>
+                </ul>
+                <a class="btn btn-primary" role="button" href="{% url 'mail_service:view_mailing' object.pk %}">Посмотреть</a>
+                <a class="btn btn-success" role="button" href="{% url 'mail_service:edit_mailing' object.pk %}">Редактировать</a>
+                <a class="btn btn-danger" role="button" href="{% url 'mail_service:delete_mailing' object.pk %} ">Удалить</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
