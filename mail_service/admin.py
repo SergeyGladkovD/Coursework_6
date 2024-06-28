@@ -11,9 +11,9 @@ class Customer(admin.ModelAdmin):
 
 @admin.register(Mailing)
 class Mailing(admin.ModelAdmin):
-	list_display = ('date_time', 'period', 'status')
-	list_filter = ('date_time', 'period', 'status')
-	search_fields = ('date_time', 'period', 'status')
+	list_display = ('start_date', 'period', 'status')
+	list_filter = ('start_date', 'period', 'status')
+	search_fields = ('start_date', 'period', 'status')
 
 
 @admin.register(Message)

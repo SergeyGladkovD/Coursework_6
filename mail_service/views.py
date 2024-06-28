@@ -5,13 +5,13 @@ from mail_service.models import Customer, Message, Mailing
 
 class CustomerCreateView(CreateView):
     model = Customer
-    fields = ('email', 'name', 'comment')
+    fields = ('__all__')
     success_url = reverse_lazy('mail_service:list')
 
 
 class CustomerUpdateView(UpdateView):
     model = Customer
-    fields = ('email', 'name', 'comment')
+    fields = ('__all__')
     success_url = reverse_lazy('mail_service:list')
 
 
@@ -30,13 +30,13 @@ class CustomerDeleteView(DeleteView):
 
 class MessageCreateView(CreateView):
     model = Message
-    fields = ('topic_letter', 'body_letter')
+    fields = ('__all__')
     success_url = reverse_lazy('mail_service:list_message')
 
 
 class MessageUpdateView(UpdateView):
     model = Message
-    fields = ('topic_letter', 'body_letter')
+    fields = ('__all__')
     success_url = reverse_lazy('mail_service:list_message')
 
 
@@ -55,13 +55,13 @@ class MessageDeleteView(DeleteView):
 
 class MailingCreateView(CreateView):
     model = Mailing
-    fields = ('date_time', 'period', 'status')
+    fields = ('__all__')
     success_url = reverse_lazy('mail_service:list_mailing')
 
 
 class MailingUpdateView(UpdateView):
     model = Mailing
-    fields = ('date_time', 'period', 'status')
+    fields = ('__all__')
     success_url = reverse_lazy('mail_service:list_mailing')
 
 
