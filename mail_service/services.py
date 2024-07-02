@@ -50,3 +50,27 @@ def my_job():
         else:
             mailing.status = 'Завершена'
         mailing.save()
+
+
+def get_cache_for_mailings():
+    if settings.CACHE_ENABLED:
+        key = 'mailings_count'
+        mailings_count = cache.get(key)
+        if mailings_count is None:
+            mailings_count = Mailing.objects.all().count()
+            cache.set(key, mailings_count)
+    else:
+        mailings_count = Mailing.objects.all().count()
+    return mailings_count
+
+
+def get_cache_for_active_mailings():
+    if settings.CACHE_ENABLED:
+        key = 'active_mailings_count'
+        active_mailings_count = cache.get(key)
+        if active_mailings_count is None:
+            active_mailings_count = Mailing.objects.filter(is_activated=True).count()
+            cache.set(key, active_mailings_count)
+    else:
+        active_mailings_count = Mailing.objects.filter(is_activated=True).count()
+    return active_mailings_count
