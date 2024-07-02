@@ -1,6 +1,31 @@
+from random import random
+
+from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
+from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView, TemplateView
+
+from blog.models import Material
 from mail_service.models import Customer, Message, Mailing
+from mail_service.services import get_cache_for_mailings, get_cache_for_active_mailings
+
+
+def home_page(request):
+    return render(request, 'mail_service/home_page.html')
+
+
+# class HomePageView(ListView):
+#     model = Mailing
+#     template_name = 'mail_service/home_page.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context_data = super().get_context_data(**kwargs)
+#         context_data['mailings_count'] = get_cache_for_mailings()
+#         context_data['active_mailings_count'] = get_cache_for_active_mailings()
+#         blog_list = list(Material.objects.all())
+#         random.shuffle(blog_list)
+#         context_data['blog_list'] = blog_list[:3]
+#         context_data['clients_count'] = len(Customer.objects.all())
+#         return context_data
 
 
 class CustomerCreateView(CreateView):
