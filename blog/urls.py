@@ -16,5 +16,4 @@ urlpatterns = [
     path("view/<int:pk>/", MaterialDetailView.as_view(), name="view_blog"),
     path("edit/<int:pk>", MaterialUpdateView.as_view(), name="edit_blog"),
     path("delete/<int:pk>", MaterialDeleteView.as_view(), name="delete_blog"),
-
 ]

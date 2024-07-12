@@ -11,7 +11,6 @@ from django.views.generic import (
 from blog.models import Material
 
 
-# Create your views here.
 class MaterialCreateView(CreateView):
     model = Material
     fields = ("title", "slug", "content", "preview", "created_at")
@@ -37,7 +36,9 @@ class MaterialUpdateView(UpdateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse("blog:list_blog", )  # args=[self.kwargs.get("pk")]
+        return reverse(
+            "blog:list_blog",
+        )  # args=[self.kwargs.get("pk")]
 
 
 class MaterialListView(ListView):

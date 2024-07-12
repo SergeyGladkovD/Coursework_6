@@ -2,7 +2,14 @@ from random import random
 
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView, TemplateView
+from django.views.generic import (
+    CreateView,
+    UpdateView,
+    ListView,
+    DetailView,
+    DeleteView,
+    TemplateView,
+)
 
 from blog.models import Material
 from mail_service.models import Customer, Message, Mailing
@@ -10,7 +17,7 @@ from mail_service.services import get_cache_for_mailings, get_cache_for_active_m
 
 
 def home_page(request):
-    return render(request, 'mail_service/home_page.html')
+    return render(request, "mail_service/home_page.html")
 
 
 # class HomePageView(ListView):
@@ -30,14 +37,14 @@ def home_page(request):
 
 class CustomerCreateView(CreateView):
     model = Customer
-    fields = ('__all__')
-    success_url = reverse_lazy('mail_service:list')
+    fields = "__all__"
+    success_url = reverse_lazy("mail_service:list_customer")
 
 
 class CustomerUpdateView(UpdateView):
     model = Customer
-    fields = ('__all__')
-    success_url = reverse_lazy('mail_service:list')
+    fields = "__all__"
+    success_url = reverse_lazy("mail_service:list_customer")
 
 
 class CustomerListView(ListView):
@@ -50,19 +57,19 @@ class CustomerDetailView(DetailView):
 
 class CustomerDeleteView(DeleteView):
     model = Customer
-    success_url = reverse_lazy('mail_service:list')
+    success_url = reverse_lazy("mail_service:list_customer")
 
 
 class MessageCreateView(CreateView):
     model = Message
-    fields = ('__all__')
-    success_url = reverse_lazy('mail_service:list_message')
+    fields = "__all__"
+    success_url = reverse_lazy("mail_service:list_message")
 
 
 class MessageUpdateView(UpdateView):
     model = Message
-    fields = ('__all__')
-    success_url = reverse_lazy('mail_service:list_message')
+    fields = "__all__"
+    success_url = reverse_lazy("mail_service:list_message")
 
 
 class MessageListView(ListView):
@@ -75,19 +82,19 @@ class MessageDetailView(DetailView):
 
 class MessageDeleteView(DeleteView):
     model = Message
-    success_url = reverse_lazy('mail_service:list_message')
+    success_url = reverse_lazy("mail_service:list_message")
 
 
 class MailingCreateView(CreateView):
     model = Mailing
-    fields = ('__all__')
-    success_url = reverse_lazy('mail_service:list_mailing')
+    fields = "__all__"
+    success_url = reverse_lazy("mail_service:list_mailing")
 
 
 class MailingUpdateView(UpdateView):
     model = Mailing
-    fields = ('__all__')
-    success_url = reverse_lazy('mail_service:list_mailing')
+    fields = "__all__"
+    success_url = reverse_lazy("mail_service:list_mailing")
 
 
 class MailingListView(ListView):
@@ -100,4 +107,4 @@ class MailingDetailView(DetailView):
 
 class MailingDeleteView(DeleteView):
     model = Mailing
-    success_url = reverse_lazy('mail_service:list_mailing')
+    success_url = reverse_lazy("mail_service:list_mailing")
