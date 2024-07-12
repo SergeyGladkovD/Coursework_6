@@ -11,8 +11,8 @@
                     <li>{{ object.email }}</li>
                     <li>{{object.comment}}</li>
                 </ul>
-                 <a class="btn btn-success" role="button" href="{% url 'mail_service:edit' object.pk %}">Редактировать</a>
-                <a class="btn btn-danger" role="button" href="{% url 'mail_service:delete' object.pk %} ">Удалить</a>
+                 <a class="btn btn-success" role="button" href="{% url 'mail_service:edit_customer' object.pk %}">Редактировать</a>
+                <a class="btn btn-danger" role="button" href="{% url 'mail_service:delete_customer' object.pk %} ">Удалить</a>
             </div>
         </div>
     </div>
